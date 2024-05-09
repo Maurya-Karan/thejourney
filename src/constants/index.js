@@ -37,7 +37,7 @@ import {
     },
     {
       id:"technologies",
-      title:"Technologies"
+      title:"Tech"
     },
     {
       id: "work",
@@ -56,7 +56,7 @@ import {
       icon: web,
     },
     {
-      title: "React Native Developer",
+      title: "React Developer",
       icon: mobile,
     },
     {

@@ -9,7 +9,7 @@ import { fadeIn,textVariant } from "../utils/motion"
 // const ProjectCard = ( name, description, image, source_code_link ) => {
   const ProjectCard = ( props ) => {
   return (
-    <motion.div variants={fadeIn("up","spring", 0.5,0.75)} className={`${styles.paddingX} `}>
+    <motion.div variants={fadeIn("up","spring", 0.5,0.75)} className={`mt-4 `}>
 
         <Tilt options={{
           max:10,
@@ -17,7 +17,7 @@ import { fadeIn,textVariant } from "../utils/motion"
           speed: 450,}
         } className= {`bg-tertiary p-5 rounded-2xl sm:h-[200px] sm:w-[900px] w-full sm:flex sm:flex-row gap-5 `}>
           
-          <div className="relative w-full sm:h-[160px] sm:w-[60rem] ">
+          <div className="relative w-full sm:h-full sm:w-full ">
 
             <img src = {props.project.image} alt = {props.project.name} className=" h-full w-full object-cover sm:object-fill rounded-2xl"/>
 
@@ -43,7 +43,7 @@ import { fadeIn,textVariant } from "../utils/motion"
 const Works = () => {
   
   return (
-    <div className={`${styles.padding} `}  id="work">
+    <div   id="work">
     <motion.div variants = {textVariant()} >
       <p className={`${styles.sectionSubText} `} >My Work</p>
       <h2 className={`${styles.sectionHeadText} `}>
@@ -51,11 +51,11 @@ const Works = () => {
       </h2>
     </motion.div>
     <div className="w-full flex">
-      <motion.p variants={fadeIn("","",0.1,1)} className={`mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]  `}>
+      <motion.p variants={fadeIn("","",0.1,1)} className={`mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]  `}>
         Following projects showcase my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos in it. It reflects my ability to solve complex problems, work with different technologies, and manage projects effectively.
       </motion.p>
     </div>
-    <div className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px] flex flex-row justify-around ">
+    <div className="mt-6  text-secondary text-[17px] max-w-3xl leading-[30px] flex flex-row justify-around ">
 
     <ProjectCard  project = {projects} />
 
