@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
 
         <motion.div initial={{opacity:0,x:100
-        }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" className='ml-44 '>
+        }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" className='absolute right-20'>
           <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
           '/>
         </motion.div>
@@ -32,9 +32,9 @@ const Hero = () => {
       </div>
       {/* <ComputersCanvas/> */}
 
-      <div className='absolute xs:bottom-0 bottom-10 w-full flex justify-between px-16  items-start '>
+      <div className={`absolute xs:bottom-0 bottom-10 w-full flex justify-between  items-start ${styles.paddingX} `}>
         <a href='#about'>
-          <div className='w-[20px] h-[50px] rounded-3xl border-4  border-secondary flex justify-center items-start p-1 opacity-20'>
+          <div className='w-[20px] h-[50px] rounded-3xl border-4  border-secondary flex justify-center items-center p-1 opacity-20'>
             <motion.div animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}
             className='w-3 h-3 rounded-full   bg-secondary mb-1'/>
             
