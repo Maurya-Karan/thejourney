@@ -23,16 +23,19 @@ const Hero = () => {
           </p>
         </div>
 
-        <motion.div initial={{opacity:0,x:100
-        }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" className='absolute right-20'>
-          <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
-          '/>
-        </motion.div>
+        
 
       </div>
       {/* <ComputersCanvas/> */}
 
-      <div className={`absolute xs:bottom-0 bottom-10 max-w-7xl flex justify-between  items-center ${styles.paddingX} `}>
+      <motion.div initial={{opacity:0,x:100
+        }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" 
+        className='absolute bottom-32 mx-auto sm:right-20 sm:top-32'>
+          <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
+          '/>
+        </motion.div>
+
+      <div className={`absolute xs:bottom-0 bottom-14 w-full  flex justify-between  items-center sm:p-20 p-8 `}>
         <a href='#about'>
           <div className='w-[16px] h-[40px] rounded-3xl border-4  border-secondary flex justify-center items-start p-[2px] opacity-10'>
             <motion.div  animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}
