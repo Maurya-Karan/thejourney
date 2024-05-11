@@ -32,16 +32,17 @@ const Hero = () => {
       </div>
       {/* <ComputersCanvas/> */}
 
-      <div className={`absolute xs:bottom-0 bottom-10 w-full flex justify-between  items-start ${styles.paddingX} `}>
+      <div className={`absolute xs:bottom-0 bottom-10 max-w-7xl flex justify-between  items-center ${styles.paddingX} `}>
         <a href='#about'>
-          <div className='w-[20px] h-[50px] rounded-3xl border-4  border-secondary flex justify-center items-center p-1 opacity-20'>
-            <motion.div animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}
-            className='w-3 h-3 rounded-full   bg-secondary mb-1'/>
+          <div className='w-[16px] h-[40px] rounded-3xl border-4  border-secondary flex justify-center items-start p-[2px] opacity-10'>
+            <motion.div  animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}
+            className='w-2 h-2 rounded-full   bg-secondary mb-1'/>
             
           </div>
         </a>
+        
         <motion.div initial={{opacity:0,y:100
-        }} transition={{duration:0.8,type:"spring",delay:0.5,ease: "easeOut"}} animate={{opacity:1,y:0}}  exit={{opacity:0,x:100}} id='social' className='animate-pulse flex flex-row gap-4'>
+        }} transition={{duration:0.8,type:"spring",delay:0.5,ease: "easeOut"}} animate={{opacity:1,y:0}}  exit={{opacity:0,x:100}} id='social' className=' flex flex-row gap-4'>
               {
                 contacts.map((contact,index) => (
                   <a key={index} href={contact.source_link}>
