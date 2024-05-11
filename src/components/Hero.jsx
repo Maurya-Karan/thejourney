@@ -29,7 +29,7 @@ const Hero = () => {
       {/* <ComputersCanvas/> */}
 
       <motion.div initial={{opacity:0,x:100
-        }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" 
+        }} animate={{opacity:1,x:0}} transition={{duration:1,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" 
         className='absolute top-80 justify-center w-full flex sm:justify-end items-center sm:right-32 sm:top-32'>
           <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
           '/>
@@ -38,7 +38,7 @@ const Hero = () => {
       <div className={`absolute sm:bottom-0 bottom-16 w-full  flex justify-between  items-center ${styles.paddingX}`}>
         <a href='#about'>
           <div className='w-[16px] h-[40px] rounded-3xl border-4  border-secondary flex justify-center items-start p-[2px] opacity-10'>
-            <motion.div  animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}
+            <motion.div  animate = {{y:[0,24,0]}} transition = {{ duration:2, repeat:Infinity, repeatType:'loop' }}
             className='w-2 h-2 rounded-full   bg-secondary mb-1'/>
             
           </div>

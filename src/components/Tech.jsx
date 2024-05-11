@@ -16,7 +16,7 @@ const Tech = () => {
         <p className={styles.sectionSubText}>Technologies</p>
         <h2 className={styles.sectionHeadText}>My Skills</h2>
       </motion.div>
-    <div id="technologies" className='flex flex-row flex-wrap w-full justify-center p-16 items-center gap-20 ' >
+    <div id="technologies" className='flex flex-row flex-wrap w-full justify-center p-16 items-center gap-x-16 gap-y-20 ' >
       {techies.map((technology, index) => (
         <motion.div
           key={index} 
