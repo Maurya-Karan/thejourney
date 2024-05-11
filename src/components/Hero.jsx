@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section className='relative w-full h-screen mx-auto'>
 <AnimatePresence>
-      <div className= {`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
+      <div className= {`${styles.paddingX} absolute  inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
 
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-[#915eff]'/>
@@ -30,12 +30,12 @@ const Hero = () => {
 
       <motion.div initial={{opacity:0,x:100
         }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" 
-        className='absolute top-52 w-full flex justify-end items-center  mx-auto sm:right-20 sm:top-32'>
+        className='absolute top-52 w-full flex justify-end items-center  mx-auto sm:right-32 sm:top-32'>
           <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
           '/>
         </motion.div>
 
-      <div className={`absolute sm:bottom-0 bottom-16 w-full  flex justify-between  items-center ${styles.paddingX} `}>
+      <div className={`absolute sm:bottom-0 bottom-16 w-full  flex justify-between  items-center sm:px-36 px-26 `}>
         <a href='#about'>
           <div className='w-[16px] h-[40px] rounded-3xl border-4  border-secondary flex justify-center items-start p-[2px] opacity-10'>
             <motion.div  animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}
