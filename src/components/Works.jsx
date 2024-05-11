@@ -43,8 +43,8 @@ import { fadeIn,textVariant } from "../utils/motion"
 const Works = () => {
   
   return (
-    <div  className={`${styles.paddingY}`} id="work" >
-    <motion.div variants = {textVariant()} >
+    <div  className={` `} >
+    <motion.div variants = {textVariant()}  id="work">
       <p className={`${styles.sectionSubText} `} >My Work</p>
       <h2 className={`${styles.sectionHeadText} `}>
         Projects

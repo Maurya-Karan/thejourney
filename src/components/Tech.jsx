@@ -12,7 +12,7 @@ const Tech = () => {
 
   return (
     <div className={`${styles.paddingY}`}>
-    <motion.div variants={textVariant()} id='about' >
+    <motion.div variants={textVariant()} id='technologies' >
         <p className={styles.sectionSubText}>Technologies</p>
         <h2 className={styles.sectionHeadText}>My Skills</h2>
       </motion.div>
