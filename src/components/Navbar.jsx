@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { styles } from '../styles'
 import { navLinks } from '../constants'
+import { AnimatePresence, motion } from 'framer-motion'
 import { logo, menu, close } from '../assets'
 
 const Navbar = () => {
@@ -33,8 +34,8 @@ const Navbar = () => {
         {/* For Mobile Devices */}
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img src={toggle ? close : menu} alt="menu" className='w-[28px] h-[28px] object-container cursor-pointer' onClick={() => setToggle(!toggle)} />
-
-          <div className={`${!toggle ? 'hidden' : 'flex'} p-6 bg-primary/90 border-2 absolute  top-20 right-0 mx-4 my-2 min-w-[140px] z-20 rounded-xl `}>
+            <AnimatePresence>
+          {toggle && <motion.div initial={{opacity:0,x:110}} animate={{opacity:1,x:0}} exit={{opacity:0,x:110}} className={` flex p-6 bg-primary/90 border-2 absolute  top-20 right-0 mx-4 my-2 min-w-[140px] z-20 rounded-xl `}>
 
             <ul className='list-none flex justify-end items-start  flex-col gap-4'>
               {navLinks.map((link) => (<li key={link.id}
@@ -46,7 +47,8 @@ const Navbar = () => {
               </li>))}
             </ul>
 
-          </div>
+          </motion.div>}
+          </AnimatePresence>
 
         </div> 
         {/* /For Mobile */}
