@@ -30,7 +30,7 @@ const Hero = () => {
 
       <motion.div initial={{opacity:0,x:100
         }} animate={{opacity:1,x:0}} transition={{duration:0.8,type:"spring",ease: "easeOut"}} exit={{opacity:0,x:100}} id="profile" 
-        className='absolute top-52 w-full flex justify-end items-center  mx-auto sm:right-32 sm:top-32'>
+        className='absolute top-80 justify-center w-full flex sm:justify-end items-center sm:right-32 sm:top-32'>
           <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
           '/>
         </motion.div>
