@@ -33,6 +33,8 @@ import tripguide from "./tripguide.png";
 import ascii_home from "./ascii_home.png";
 import linkedin from "./company/linkedin.png"
 import email from "./company/email.png"
+import karan2 from "./karan2.jpeg";
+import karan from "./karan.png";
 export {
   logo,
   backend,
@@ -65,5 +67,6 @@ export {
   jobit,
   tripguide,
   ascii_home, 
-  linkedin
+  linkedin,
+  karan
 };
