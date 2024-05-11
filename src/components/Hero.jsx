@@ -35,7 +35,7 @@ const Hero = () => {
           '/>
         </motion.div>
 
-      <div className={`absolute sm:bottom-0 bottom-16 w-full  flex justify-between  items-center sm:px-36 px-26 `}>
+      <div className={`absolute sm:bottom-0 bottom-16 w-full  flex justify-between  items-center ${styles.paddingX}`}>
         <a href='#about'>
           <div className='w-[16px] h-[40px] rounded-3xl border-4  border-secondary flex justify-center items-start p-[2px] opacity-10'>
             <motion.div  animate = {{y:[0,24,0]}} transition = {{ duration:1.5, repeat:Infinity, repeatType:'loop' }}

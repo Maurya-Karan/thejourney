@@ -34,11 +34,11 @@ const Navbar = () => {
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img src={toggle ? close : menu} alt="menu" className='w-[28px] h-[28px] object-container cursor-pointer' onClick={() => setToggle(!toggle)} />
 
-          <div className={`${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+          <div className={`${!toggle ? 'hidden' : 'flex'} p-6 bg-primary/90 border-2 absolute  top-20 right-0 mx-4 my-2 min-w-[140px] z-20 rounded-xl `}>
 
-            <ul className='list-none flex justify-end items-start flex-col gap-4'>
+            <ul className='list-none flex justify-end items-start  flex-col gap-4'>
               {navLinks.map((link) => (<li key={link.id}
-                className={`${active === link.title ? "text-white" : "text-secondary"} font-poppins font-medium cursor-pointer text-[16px]`} onClick={() => {
+                className={`${active === link.title ? "text-white border-b-2" : "text-secondary"}  w-full font-poppins font-medium cursor-pointer text-[16px]`} onClick={() => {
                   setToggle(!toggle);
                   setActive(link.title)
                 }}>

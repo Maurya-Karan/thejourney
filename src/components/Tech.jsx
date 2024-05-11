@@ -3,13 +3,19 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionWrapper } from '../hoc'
 import { technologies } from '../constants'
-import { fadeIn } from '../utils/motion'
+import { textVariant, fadeIn } from '../utils/motion'
+import { styles } from '../styles'
 
 const Tech = () => {
   const [techies] = useState(technologies)
 
 
   return (
+    <>
+    <motion.div variants={textVariant()} id='about'>
+        <p className={styles.sectionSubText}>Technologies</p>
+        <h2 className={styles.sectionHeadText}>My Skills</h2>
+      </motion.div>
     <div id="technologies" className='flex flex-row flex-wrap w-full justify-center p-16 items-center gap-20 ' >
       {techies.map((technology, index) => (
         <motion.div
@@ -19,6 +25,7 @@ const Tech = () => {
         </motion.div>
       ))}
     </div>
+    </>
   )
 }
 
