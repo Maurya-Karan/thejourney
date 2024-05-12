@@ -6,17 +6,18 @@ import { technologies } from '../constants'
 import { textVariant, fadeIn } from '../utils/motion'
 import { styles } from '../styles'
 
+
 const Tech = () => {
   const [techies] = useState(technologies)
 
-
+ 
   return (
     <div className={`${styles.paddingY}`}>
     <motion.div variants={textVariant()} id='technologies' >
         <p className={styles.sectionSubText}>Technologies</p>
         <h2 className={styles.sectionHeadText}>My Skills</h2>
       </motion.div>
-    <div id="technologies" className='flex flex-row flex-wrap w-full justify-center p-16 items-center gap-x-14 gap-y-20 ' >
+    <div id="technologies" className='flex flex-row flex-wrap w-full justify-center p-16 items-center gap-x-12 gap-y-20 ' >
       {techies.map((technology, index) => (
         <motion.div
           key={index} 

@@ -1,14 +1,15 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { styles } from '../styles'
 import { navLinks } from '../constants'
 import { AnimatePresence, motion } from 'framer-motion'
 import { logo, menu, close } from '../assets'
 
-const Navbar = () => {
+const Navbar = (scrolled) => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+
 
   return (
     <nav className={`${styles.paddingX} w-screen flex items-center py-2 fixed top-0 z-20 bg-primary/25 backdrop-blur-sm`} >
@@ -39,9 +40,9 @@ const Navbar = () => {
 
             <ul className='list-none flex justify-end items-start  flex-col gap-4'>
               {navLinks.map((link) => (<li key={link.id}
-                className={`${active === link.title ? "text-white border-b-2" : "text-secondary"}  w-full font-poppins font-medium cursor-pointer text-[16px]`} onClick={() => {
+                className={`${active === link.id ?  "text-white " : "text-secondary"} border-b-[1px]  w-full font-poppins font-medium cursor-pointer text-[16px]`} onClick={() => {
                   setToggle(!toggle);
-                  setActive(link.title)
+                  setActive(link.id)
                 }}>
                 <a href={`#${link.id}`}> {link.title}</a>
               </li>))}
