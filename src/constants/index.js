@@ -47,6 +47,10 @@ import {
       id: "contact",
       title: "Contact",
     },
+    {
+      id:"donate",
+      title:"Donate"
+    }
     
   ];
   

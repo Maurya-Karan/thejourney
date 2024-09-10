@@ -68,5 +68,6 @@ export {
   tripguide,
   ascii_home, 
   linkedin,
-  karan
+  karan,
+  karan2
 };
