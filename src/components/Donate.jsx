@@ -32,7 +32,7 @@ const Donate = () => {
         }
     
         // Create order by calling the server endpoint
-        const response = await fetch('http://localhost:3000/create-order', {
+        const response = await fetch('http://ec2-174-129-135-255.compute-1.amazonaws.com:3000/create-order', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const Donate = () => {
           name: '',
           description: 'Test Transaction',
           order_id: order.id, // This is the order_id created in the backend
-          callback_url: 'http://localhost:3000/payment-success', // Your success URL
+          callback_url: 'http://ec2-174-129-135-255.compute-1.amazonaws.com:3000/payment-success', // Your success URL
           prefill: {
             name: '',
             email: '',
@@ -63,7 +63,7 @@ const Donate = () => {
             upi:true
           },
           handler: function (response) {
-            fetch('http://localhost:3000/verify-payment', {
+            fetch('http://ec2-174-129-135-255.compute-1.amazonaws.com:3000/verify-payment', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const Donate = () => {
             }).then(res => res.json())
               .then(data => {
                 if (data.status === 'ok') {
-                  window.location.href = 'http://localhost:3000/payment-success';
+                  window.location.href = 'http://ec2-174-129-135-255.compute-1.amazonaws.com:3000/payment-success';
                 } else {
                   alert('Payment verification failed');
                 }
