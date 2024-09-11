@@ -32,7 +32,7 @@ const Donate = () => {
         }
     
         // Create order by calling the server endpoint
-        const response = await fetch(' https://505d-174-129-135-255.ngrok-free.app/create-order', {
+        const response = await fetch('https://f6c6-174-129-135-255.ngrok-free.app/create-order', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const Donate = () => {
           name: '',
           description: 'Test Transaction',
           order_id: order.id, // This is the order_id created in the backend
-          callback_url: ' https://505d-174-129-135-255.ngrok-free.app/payment-success', // Your success URL
+          callback_url: 'https://f6c6-174-129-135-255.ngrok-free.app/payment-success', // Your success URL
           prefill: {
             name: '',
             email: '',
@@ -63,7 +63,7 @@ const Donate = () => {
             upi:true
           },
           handler: function (response) {
-            fetch(' https://505d-174-129-135-255.ngrok-free.app/verify-payment', {
+            fetch('https://f6c6-174-129-135-255.ngrok-free.app/verify-payment', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const Donate = () => {
             }).then(res => res.json())
               .then(data => {
                 if (data.status === 'ok') {
-                  window.location.href = ' https://505d-174-129-135-255.ngrok-free.app/payment-success';
+                  window.location.href = 'https://f6c6-174-129-135-255.ngrok-free.app/payment-success';
                 } else {
                   alert('Payment verification failed');
                 }
