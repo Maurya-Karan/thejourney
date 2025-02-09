@@ -47,11 +47,14 @@ import {
       id: "contact",
       title: "Contact",
     },
+    // {
+    //   id:"donate",
+    //   title:"Donate"
+    // },
     {
-      id:"donate",
-      title:"Donate"
+      id:"resume",
+      title:"Resume"
     }
-    
   ];
   
   const services = [

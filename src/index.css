@@ -126,6 +126,19 @@
   transform: translateZ(0);
 }
 
+.light-mode {
+  background: white !important;
+  color: black !important;
+}
+
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode p {
+  color: black !important;
+}
+
+
 @keyframes mulShdSpin {
   0%,
   100% {
