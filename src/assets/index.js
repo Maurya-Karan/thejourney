@@ -48,7 +48,6 @@ import linkedin from "./company/linkedin.png";
 import email from "./company/email.png";
 import karan2 from "./karan2.jpeg";
 import karan from "./karan.png";
-import resume from "./resume.pdf";
 export {
   logo,
   backend,
@@ -94,5 +93,5 @@ export {
   linkedin,
   karan,
   karan2,
-  resume,
+
 };

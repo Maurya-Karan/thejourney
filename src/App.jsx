@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Donate, Resume } from "./components";
-import {resume} from "./assets";
+
 
 const App = () => {
 

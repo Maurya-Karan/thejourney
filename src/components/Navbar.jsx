@@ -5,7 +5,7 @@ import { styles } from '../styles'
 import { navLinks } from '../constants'
 import { AnimatePresence, motion } from 'framer-motion'
 import { logo, menu, close } from '../assets'
-import { resume } from '../assets'
+
 
 const Navbar = (scrolled) => {
   const [active, setActive] = useState("");
