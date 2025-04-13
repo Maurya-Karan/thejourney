@@ -42,7 +42,7 @@ const Navbar = (scrolled) => {
             </a>
           </li>))}
           <li className={`hover:text-white text-secondary  font-poppins font-medium cursor-pointer text-[18px]`}>
-                  <a href="src/assets/resume.pdf" download={"karanResume.pdf"}>Resume</a>
+                  <a href="/resume.pdf" download={"karanResume.pdf"}>Resume</a>
                 </li>
         </ul>
 
@@ -61,7 +61,7 @@ const Navbar = (scrolled) => {
                   <a href={`#${link.id}`}> {link.title}</a>
                 </li>))}
                 <li className={`hover:text-white text-secondary border-b-[1px]  w-full font-poppins font-medium cursor-pointer text-[16px]`}>
-                  <a href="src/assets/resume.pdf" download={"karanResume.pdf"}>Resume</a>
+                  <a href="/resume.pdf" download={"karanResume.pdf"}>Resume</a>
                 </li>
               </ul>
 
