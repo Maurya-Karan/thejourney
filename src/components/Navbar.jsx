@@ -5,7 +5,7 @@ import { styles } from '../styles'
 import { navLinks } from '../constants'
 import { AnimatePresence, motion } from 'framer-motion'
 import { logo, menu, close } from '../assets'
-import Resume from './Resume'
+import { resume } from '../assets'
 
 const Navbar = (scrolled) => {
   const [active, setActive] = useState("");
@@ -41,7 +41,9 @@ const Navbar = (scrolled) => {
               {link.title}
             </a>
           </li>))}
-
+          <li className={`hover:text-white text-secondary  font-poppins font-medium cursor-pointer text-[18px]`}>
+                  <a href="src/assets/resume.pdf" download={"karanResume.pdf"}>Resume</a>
+                </li>
         </ul>
 
         {/* For Mobile Devices */}
@@ -58,6 +60,9 @@ const Navbar = (scrolled) => {
                   }}>
                   <a href={`#${link.id}`}> {link.title}</a>
                 </li>))}
+                <li className={`hover:text-white text-secondary border-b-[1px]  w-full font-poppins font-medium cursor-pointer text-[16px]`}>
+                  <a href="src/assets/resume.pdf" download={"karanResume.pdf"}>Resume</a>
+                </li>
               </ul>
 
             </motion.div>}
