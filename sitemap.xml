@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home -->
+  <url>
+    <loc>https://mauryakaran.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <!-- About Section -->
+  <url>
+    <loc>https://mauryakaran.com/#about</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- Technologies / Skills Section -->
+  <url>
+    <loc>https://mauryakaran.com/#technologies</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- Work / Projects Section -->
+  <url>
+    <loc>https://mauryakaran.com/#work</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- Contact Section -->
+  <url>
+    <loc>https://mauryakaran.com/#contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <!-- Resume Download -->
+  <url>
+    <loc>https://mauryakaran.com/resume.pdf</loc>
+    <priority>0.6</priority>
+  </url>
+  <!-- Project Details (if you have dedicated routes for projects) -->
+  <url>
+    <loc>https://mauryakaran.com/projects/ascii</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mauryakaran.com/projects/food-sharing-platform</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mauryakaran.com/projects/wctool</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mauryakaran.com/projects/web-crawler</loc>
+    <priority>0.7</priority>
+  </url>
+  <!-- Add more project URLs as needed -->
+</urlset>
