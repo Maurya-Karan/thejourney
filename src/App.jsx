@@ -15,7 +15,7 @@ const App = () => {
         <meta name="author" content="Karan Maurya" />
         <meta property="og:title" content="Karan Maurya - Software Developer/Web Developer" />
         <meta property="og:description" content="Portfolio and resume of Karan Maurya, a passionate software developer skilled in Java, React, and cloud computing." />
-        <meta property="og:url" content="https://karanmaurya.vercel.app" />
+        <meta property="og:url" content="https://mauryakaran.com" />
         <meta property="og:type" content="website" />
       </Helmet>
 
