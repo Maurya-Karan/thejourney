@@ -17,7 +17,7 @@ function Timeline() {
         <div className='w-full h-screen bg-blog-pattern bg-cover bg-no-repeat flex sm:flex-row flex-col' id="timeline">
             {/* Sidebar with dates */}
             <motion.div 
-                className={`backdrop-blur-xl sm:overflow-y-scroll max-sm:overflow-x-scroll no-scrollbar sm:p-4 p-2 bg-primary/40 sm:my-6 sm:ml-2 sm:rounded-3xl max-sm:flex max-sm:flex-row max-sm:gap-4 ${side?"sm:w-20":"sm:w-72"} w-full transition-all duration-700`}
+                className={`backdrop-blur-xl sm:overflow-y-scroll max-sm:overflow-x-scroll no-scrollbar sm:p-4 p-1 bg-primary/40 sm:my-6 sm:ml-2 sm:rounded-3xl max-sm:flex max-sm:flex-row max-sm:gap-4 ${side?"sm:w-20":"sm:w-72"} w-full transition-all duration-700`}
 
                 
             >
@@ -90,7 +90,7 @@ function Timeline() {
                         <h2 className='text-4xl text-center font-bold text-indigo-200 mb-4'>
                             {currentBlog.date}
                         </h2>
-                        <div className='text-indigo-300/90 text-lg leading-relaxed'>
+                        <div className='text-indigo-200/90 text-lg leading-relaxed'>
                             {currentBlog.content}
                         </div>
                     </div>
