@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "id": "id1",
+        "title": "The Docker",
+        "content": "Content goes here",
+        "date": "2025-6-29"
+    },
+    {
+        "id": "id2",
+        "title": "Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer ",
+        "content": "Content of 2nd blog goes here, Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer Blog Title, This title should be long and should be longer ",
+        "date": "2024-5-21"
+    },
+    {
+        "id": "id3",
+        "title": "Why is everything about AI/ML",
+        "content": "Content goes here of the third blog.",
+        "date": "2024-3-17"
+    }
+]
