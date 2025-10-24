@@ -35,14 +35,7 @@ import jwt from "./tech/jwt.png";
 import gemini from "./tech/gemini.jpg";
 
 import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
 
-import carrent from "./carrent.png";
-import dialer from "./tech/dialer.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
 import ascii_home from "./ascii_home.png";
 import linkedin from "./company/linkedin.png";
 import email from "./company/email.png";
@@ -83,13 +76,6 @@ export {
   jwt,
   gemini,
   meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  dialer,
-  jobit,
-  tripguide,
   ascii_home,
   linkedin,
   karan,

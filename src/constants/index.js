@@ -1,7 +1,7 @@
 import {
   mobile,
   backend,
-  creator,
+
   web,
   javascript,
   typescript,
@@ -13,18 +13,11 @@ import {
   nodejs,
   mongodb,
   git,
-  dialer,
+
   github,
-  figma,
+
   docker,
   meta,
-  starbucks,
-  tesla,
-  shopify,
-  carrent,
-  jobit,
-  tripguide,
-  threejs,
   ascii_home,
   linkedin,
   email, java, cloudinary, jwt, gemini, cpp, python, express, nextjs, mysql, oraclesql,
