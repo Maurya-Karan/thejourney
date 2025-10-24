@@ -40,10 +40,17 @@ const Navbar = (scrolled) => {
             <a href={`#${link.id}`} onClick={(e) => { e.preventDefault(); handleScroll(link.id); }}>
               {link.title}
             </a>
+            {/* <Link to={`/#${link.id}`} onClick={(e) => { e.preventDefault(); handleScroll(link.id); }}>{link.title}</Link> */}
           </li>))}
+
           <li className={`hover:text-white text-secondary  font-poppins font-medium cursor-pointer text-[18px]`}>
-                  <a href="/resume.pdf" download={"karanResume.pdf"}>Resume</a>
-                </li>
+
+            <Link to="/blogs">Blogs</Link>
+          </li>
+          <li className={`hover:text-white text-secondary  font-poppins font-medium cursor-pointer text-[18px]`}>
+
+            <a href="/resume.pdf" download={"karanResume.pdf"}>Resume</a>
+          </li>
         </ul>
 
         {/* For Mobile Devices */}
@@ -60,6 +67,12 @@ const Navbar = (scrolled) => {
                   }}>
                   <a href={`#${link.id}`}> {link.title}</a>
                 </li>))}
+
+                <li className={`hover:text-white text-secondary border-b-[1px] w-full font-poppins font-medium cursor-pointer text-[16px]`}
+                  onClick={() => setToggle(!toggle)}>
+                  <Link to="/blogs">Blogs</Link>
+                </li>
+
                 <li className={`hover:text-white text-secondary border-b-[1px]  w-full font-poppins font-medium cursor-pointer text-[16px]`}>
                   <a href="/resume.pdf" download={"karanResume.pdf"}>Resume</a>
                 </li>

@@ -1,15 +1,16 @@
-import React from 'react'
+
 import { AnimatePresence, motion, spring } from 'framer-motion'
 import { styles } from '../styles'
-import { ComputersCanvas } from './canvas';
+
 import { karan } from '../assets'
 import { contacts } from '../constants';
-import { fadeIn, textVariant, zoomIn } from '../utils/motion';
+
+import Navbar from './Navbar';
 const Hero = () => {
   return (
     <AnimatePresence>
-      <section className='relative w-full h-screen mx-auto'>
-
+      <section className='relative w-full h-screen mx-auto bg-hero-pattern bg-cover bg-no-repeat'>
+      <Navbar/>
         <div className={`${styles.paddingX} absolute  inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
 
           <div className='flex flex-col justify-center items-center mt-5'>
@@ -27,7 +28,7 @@ const Hero = () => {
 
 
         </div>
-        {/* <ComputersCanvas/> */}
+       
 
         <motion.div initial={{
           opacity: 0, x: 100

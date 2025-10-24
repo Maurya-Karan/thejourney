@@ -19,6 +19,11 @@
   display: block;
 }
 
+.no-scrollbar {
+   -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
 .black-gradient {
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(

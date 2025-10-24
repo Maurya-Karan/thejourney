@@ -6,7 +6,7 @@ import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-
+import blogbg from "./blog_bg.svg";
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -49,6 +49,7 @@ import email from "./company/email.png";
 import karan2 from "./karan2.jpeg";
 import karan from "./karan.png";
 export {
+  blogbg,
   logo,
   backend,
   creator,

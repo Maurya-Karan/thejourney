@@ -1,6 +1,6 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Donate, Resume } from "./components";
+import { About, Contact,  Hero, Navbar, Tech, Works, Timeline, Layout } from "./components";
 
 
 const App = () => {
@@ -20,21 +20,19 @@ const App = () => {
       </Helmet>
 
       <BrowserRouter>
-
-        <div className='relative z-0 bg-primary' >
-          <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-            <Navbar />
-            <Hero />
-          </div>
-          <About />
-
-          <Tech />
-          <Works />
-          <Contact />
-          {/* <Donate/> */}
-          {/* <Resume /> */}
-          
-        </div>
+        <Routes>
+          {/* <Route path="/" element={<Layout />} /> */}
+          <Route index element={
+            <div className="relative z-0 bg-primary">
+              <Hero />
+              <About />
+              <Tech />
+              <Works />
+              <Contact />
+            </div>
+          } />
+          <Route path="/blogs" element={<Timeline />} />
+        </Routes>
       </BrowserRouter>
     </HelmetProvider>
   );
