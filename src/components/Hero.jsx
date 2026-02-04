@@ -4,13 +4,14 @@ import { styles } from '../styles'
 
 import { karan } from '../assets'
 import { contacts } from '../constants';
+import { Link } from 'react-router-dom';
 
 import Navbar from './Navbar';
 const Hero = () => {
   return (
     <AnimatePresence>
-      <section className='relative w-full h-screen mx-auto bg-hero-pattern bg-cover bg-no-repeat'>
-      <Navbar/>
+      <section className='relative w-full h-screen flex justify-center items-center bg-hero-pattern bg-cover bg-no-repeat'>
+        <Navbar />
         <div className={`${styles.paddingX} absolute  inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
 
           <div className='flex flex-col justify-center items-center mt-5'>
@@ -28,7 +29,8 @@ const Hero = () => {
 
 
         </div>
-       
+
+
 
         <motion.div initial={{
           opacity: 0, x: 100
@@ -37,6 +39,17 @@ const Hero = () => {
           <img src={karan} className='w-52 h-52 object-cover border-8  rounded-full
           '/>
         </motion.div>
+
+        <motion.h1
+          className={`absolute bottom-36 border-2 border-white/30 hover:border-yellow-400/30 sm:p-6 p-3 rounded-3xl mx-auto text-4xl md:text-4xl text-center font-bold text-white mb-4`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <Link to='/hb' className="text-transparent  bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-300 to-pink-400">
+            Something Special for My Mother
+          </Link>
+        </motion.h1>
 
         <div className={`absolute sm:bottom-0 bottom-16 w-full  flex justify-between  items-center ${styles.paddingX}`}>
           <a href='#about'>
