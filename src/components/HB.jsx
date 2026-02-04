@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaGift, FaBirthdayCake, FaStar, FaHeart } from "react-icons/fa";
+import { useState, useEffect, useMemo, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { FaGift, FaBirthdayCake, FaStar, FaHeart, FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
 import { GiBalloons, GiPartyPopper } from "react-icons/gi";
+
 
 
 
@@ -23,11 +24,54 @@ import { GiBalloons, GiPartyPopper } from "react-icons/gi";
 //   scale: number;
 // }
 
+const CAROUSEL_SLIDES = [
+    {
+        image: "https://drive.google.com/thumbnail?id=1K1oLiurTP213zWsAv70K9HymF9vM_8TC&sz=w1000",
+        
+    },
+
+    {
+        image: "https://drive.google.com/thumbnail?id=1hDwNVvocGyGJ5-Gf5XulljIlosdEyB6w&sz=w1000",
+        
+    },
+    {
+        image: "https://drive.google.com/thumbnail?id=1fF7e3LGY2ws_gdPF1G-cdh3oxwUwhQSL&sz=w1000",
+       
+    },
+    {
+        image: "https://drive.google.com/thumbnail?id=1nUh9ond7VJyp49oloXv_kZLbQLau6itA&sz=w1000",
+       
+    },
+    {
+        image: "https://drive.google.com/thumbnail?id=1xsqrNC1V-LdP7f5VVD_ESPgyTkCf06wO&sz=w1000",
+        
+    },
+    {
+        image: "https://drive.google.com/thumbnail?id=1PDPi5TWar6DB4dCic8pWCrvNSaqbuH75&sz=w1000",
+       
+    },
+    {
+        image: "https://drive.google.com/thumbnail?id=1D32qxi-qB-EbTFLv-fAbmBJF8wzsnJ5J&sz=w1000",
+       
+    },
+
+    {
+        image: "https://drive.google.com/thumbnail?id=1NvMqVTG-nDZ3j5RmMvljY_PrHgiZLPm-&sz=w1000",
+       
+    }
+];
+
 const COLORS = ["#FF6B9D", "#FFD93D", "#6BCB77", "#4D96FF", "#FF8C42", "#C9B1FF"];
 
 export default function BirthdaySurprise() {
     const [stage, setStage] = useState("intro");
     const [showConfetti, setShowConfetti] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [mouseX, setMouseX] = useState(0);
+    const carouselRef = useRef(null);
+
+    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % CAROUSEL_SLIDES.length);
+    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + CAROUSEL_SLIDES.length) % CAROUSEL_SLIDES.length);
 
     const confetti = useMemo(() =>
         Array.from({ length: 60 }, (_, i) => ({
@@ -64,6 +108,16 @@ export default function BirthdaySurprise() {
             setShowConfetti(true);
         }
     }, [stage]);
+
+    // Handle mouse movement for parallax effect
+    const handleMouseMove = (e) => {
+        if (carouselRef.current) {
+            const rect = carouselRef.current.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            setMouseX(x);
+        }
+    };
+
 
     return (
         <div id="HB" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#1a1025] via-[#2d1f3d] to-[#1a1025]">
@@ -372,6 +426,94 @@ export default function BirthdaySurprise() {
                                     </motion.div>
                                 ))}
                             </motion.div>
+
+                            {/* Carousel Stage */}
+
+                            <motion.div
+                                key="carousel"
+                                ref={carouselRef}
+                                onMouseMove={handleMouseMove}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 1 }}
+                                className="w-full max-w-4xl mx-auto px-4"
+                            >
+                               
+                                {/* Parallax Image Carousel */}
+                                <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={currentSlide}
+                                            className="absolute inset-0"
+                                            initial={{ opacity: 0, x: 100 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -100 }}
+                                            transition={{ duration: 0.5 }}
+                                        >
+                                            {/* Parallax background image */}
+                                            <motion.div
+                                                className="absolute inset-0"
+                                                style={{
+                                                    backgroundImage: `url(${CAROUSEL_SLIDES[currentSlide].image})`,
+                                                    backgroundSize: "contain",
+                                                    backgroundPosition: "center",
+                                                }}
+                                                animate={{
+                                                    x: mouseX * 30,
+                                                    scale: 1.1,
+                                                }}
+                                                transition={{ type: "spring", stiffness: 100, damping: 30 }}
+                                            />
+
+                                            {/* Overlay gradient */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+
+                                            {/* Quote content */}
+                                            <motion.div
+                                                className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12"
+                                                animate={{ x: mouseX * -15 }}
+                                                transition={{ type: "spring", stiffness: 100, damping: 30 }}
+                                            >
+                                                <FaQuoteLeft className="text-3xl text-pink-400/60 mb-4" />
+                                                
+                                            </motion.div>
+                                        </motion.div>
+                                    </AnimatePresence>
+
+                                    {/* Navigation arrows */}
+                                    <button
+                                        onClick={prevSlide}
+                                        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors z-10"
+                                    >
+                                        <FaChevronLeft className="text-xl" />
+                                    </button>
+                                    <button
+                                        onClick={nextSlide}
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 transition-colors z-10"
+                                    >
+                                        <FaChevronRight className="text-xl" />
+                                    </button>
+
+                                    {/* Dots indicator */}
+                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                        {CAROUSEL_SLIDES.map((_, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => setCurrentSlide(idx)}
+                                                className={`w-2.5 h-2.5 rounded-full transition-all ${idx === currentSlide
+                                                    ? "bg-pink-400 w-6"
+                                                    : "bg-white/50 hover:bg-white/70"
+                                                    }`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Continue button */}
+
+                            </motion.div>
+
 
                             {/* Replay button */}
                             <motion.button
