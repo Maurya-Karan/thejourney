@@ -27,37 +27,37 @@ import { GiBalloons, GiPartyPopper } from "react-icons/gi";
 const CAROUSEL_SLIDES = [
     {
         image: "https://drive.google.com/thumbnail?id=1K1oLiurTP213zWsAv70K9HymF9vM_8TC&sz=w1000",
-        
+
     },
 
     {
         image: "https://drive.google.com/thumbnail?id=1hDwNVvocGyGJ5-Gf5XulljIlosdEyB6w&sz=w1000",
-        
+
     },
     {
         image: "https://drive.google.com/thumbnail?id=1fF7e3LGY2ws_gdPF1G-cdh3oxwUwhQSL&sz=w1000",
-       
+
     },
     {
         image: "https://drive.google.com/thumbnail?id=1nUh9ond7VJyp49oloXv_kZLbQLau6itA&sz=w1000",
-       
+
     },
     {
         image: "https://drive.google.com/thumbnail?id=1xsqrNC1V-LdP7f5VVD_ESPgyTkCf06wO&sz=w1000",
-        
+
     },
     {
         image: "https://drive.google.com/thumbnail?id=1PDPi5TWar6DB4dCic8pWCrvNSaqbuH75&sz=w1000",
-       
+
     },
     {
         image: "https://drive.google.com/thumbnail?id=1D32qxi-qB-EbTFLv-fAbmBJF8wzsnJ5J&sz=w1000",
-       
+
     },
 
     {
         image: "https://drive.google.com/thumbnail?id=1NvMqVTG-nDZ3j5RmMvljY_PrHgiZLPm-&sz=w1000",
-       
+
     }
 ];
 
@@ -108,6 +108,14 @@ export default function BirthdaySurprise() {
             setShowConfetti(true);
         }
     }, [stage]);
+
+    useEffect(() => {
+        const autoPlay = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % CAROUSEL_SLIDES.length);
+        }, 3000); 
+
+        return () => clearInterval(autoPlay);
+    }, []);
 
     // Handle mouse movement for parallax effect
     const handleMouseMove = (e) => {
@@ -439,7 +447,7 @@ export default function BirthdaySurprise() {
                                 transition={{ duration: 1 }}
                                 className="w-full max-w-4xl mx-auto px-4"
                             >
-                               
+
                                 {/* Parallax Image Carousel */}
                                 <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
                                     <AnimatePresence mode="wait">
@@ -476,7 +484,7 @@ export default function BirthdaySurprise() {
                                                 transition={{ type: "spring", stiffness: 100, damping: 30 }}
                                             >
                                                 <FaQuoteLeft className="text-3xl text-pink-400/60 mb-4" />
-                                                
+
                                             </motion.div>
                                         </motion.div>
                                     </AnimatePresence>
