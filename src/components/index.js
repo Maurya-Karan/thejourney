@@ -11,6 +11,7 @@ import Donate from './Donate';
 import Resume from './Resume';
 import Timeline from './Blog/Timeline';
 import Layout from './Layout';
+import HB from './HB';
 export {
   Hero,
   Navbar,
@@ -23,7 +24,7 @@ export {
   Feedbacks,
   Contact,
 
-
+  HB,
   Donate,
   Resume
 }

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { About, Contact,  Hero, Navbar, Tech, Works, Timeline, Layout } from "./components";
+import { About, Contact,  Hero, Navbar, Tech, Works, Timeline, Layout, HB } from "./components";
 
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
             </div>
           } />
           <Route path="/blogs" element={<Timeline />} />
+          <Route path="/hb" element={<HB/>}/>
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
