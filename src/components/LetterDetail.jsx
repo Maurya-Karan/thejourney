@@ -1,38 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { translateContent, languages } from '../utils/translateWithLLM';
+import { languages } from '../utils/translateWithLLM';
 
 const LetterDetail = ({ letter, onBack }) => {
     const { logout } = useAuth();
     const [selectedLanguage, setSelectedLanguage] = useState('en');
-    const [translatedContent, setTranslatedContent] = useState(letter.content);
-    const [isTranslating, setIsTranslating] = useState(false);
 
-    useEffect(() => {
-        const fetchTranslation = async () => {
-            if (selectedLanguage === 'en') {
-                setTranslatedContent(letter.content);
-                return;
-            }
-
-            setIsTranslating(true);
-            try {
-                const langName = languages.find(l => l.code === selectedLanguage)?.name || selectedLanguage;
-                console.log("inside setIsTranslating..");
-                const contentTranslation = await translateContent(letter.content, langName);
-                console.log(contentTranslation);
-                setTranslatedContent(contentTranslation);
-            } catch (error) {
-                console.error('Translation failed:', error);
-                setTranslatedContent('Translation failed. Please try again.');
-            } finally {
-                setIsTranslating(false);
-            }
-        };
-
-        fetchTranslation();
-    }, [selectedLanguage, letter]);
+    // Get translated content from pre-stored translations
+    const getContent = () => {
+        if (selectedLanguage === 'en') {
+            return letter.content;
+        }
+        // Get the language code mapping
+        const langCodeMap = { hi: 'hi', pa: 'pa' };
+        const langCode = langCodeMap[selectedLanguage];
+        return letter.translations?.[langCode] || letter.content;
+    };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 md:p-8">
@@ -131,13 +115,8 @@ const LetterDetail = ({ letter, onBack }) => {
                         transition={{ delay: 0.3 }}
                         className="prose prose-invert max-w-none"
                     >
-                        {isTranslating && (
-                            <div className="mb-6 p-4 bg-purple-500/20 border border-purple-500/50 rounded-lg text-purple-300">
-                                ✨ Translating to {languages.find(l => l.code === selectedLanguage)?.name || selectedLanguage}...
-                            </div>
-                        )}
                         <div className="text-lg text-gray-300 leading-relaxed whitespace-pre-line">
-                            {isTranslating ? letter.content : translatedContent}
+                            {getContent()}
                         </div>
                     </motion.div>
 
