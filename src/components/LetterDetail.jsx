@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { languages } from '../utils/translateWithLLM';
+
+// Language options for translations
+const languages = [
+    { code: "en", name: "English", label: "English" },
+    { code: "hi", name: "Hindi", label: "हिंदी" },
+    { code: "pa", name: "Punjabi", label: "ਪੰਜਾਬੀ" },
+];
 
 const LetterDetail = ({ letter, onBack }) => {
     const { logout } = useAuth();
