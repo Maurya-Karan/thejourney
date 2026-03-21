@@ -247,4 +247,8 @@ const projects = [
   },
 ];
 
-export { services, technologies, testimonials, projects, contacts };
+
+
+import { letters } from './letters'
+
+export { services, technologies, testimonials, projects, contacts, letters };

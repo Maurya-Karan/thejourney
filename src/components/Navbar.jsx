@@ -45,7 +45,7 @@ const Navbar = (scrolled) => {
 
           <li className={`hover:text-white text-secondary  font-poppins font-medium cursor-pointer text-[18px]`}>
 
-            <Link to="/blogs">Blogs</Link>
+            <Link to="/letters">Blogs</Link>
           </li>
           <li className={`hover:text-white text-secondary  font-poppins font-medium cursor-pointer text-[18px]`}>
 

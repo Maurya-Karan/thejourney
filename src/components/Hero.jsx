@@ -47,7 +47,7 @@ const Hero = () => {
           transition={{ delay: 0.3 }}
         >
           <Link to='/hb' className="text-transparent  bg-clip-text bg-gradient-to-r from-pink-400 via-yellow-300 to-pink-400">
-            Something Special for My Mother
+            Something Special for My Father
           </Link>
         </motion.h1>
 
