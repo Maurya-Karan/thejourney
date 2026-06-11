@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Why I Chose Go for Log Parsing",
+    "date": "2026-06-10",
+    "content": "When dealing with millions of log entries, performance isn't just a feature—it's a requirement. I initially prototyped my anomaly detection framework in Python, but quickly ran into bottleneck issues with the GIL during concurrent parsing. Refactoring the core Distinguishability-based Structural Log Parsing engine into Go reduced our ingestion time by over 400%. Go's native goroutines made handling concurrent file streams trivial, proving that choosing the right tool for the system architecture is half the battle."
+  },
+  {
+    "id": 2,
+    "title": "Embracing the Neo-Brutalist Web",
+    "date": "2026-05-28",
+    "content": "The modern web has become a sea of soft shadows, rounded corners, and glassmorphism. While beautiful, it often lacks structural rigidity. Moving my portfolio to a neo-brutalist aesthetic wasn't just a design choice; it was an engineering philosophy. Hard borders, high contrast, and stark layouts reflect the way backend systems are built: clear boundaries, zero ambiguity, and functional over flashy. Plus, stripping out complex CSS filters significantly improved rendering performance."
+  },
+  {
+    "id": 3,
+    "title": "Mastering the Linux Ecosystem",
+    "date": "2026-04-15",
+    "content": "Transitioning completely to Linux for my daily driver was the best decision I made for my development workflow. Using Fedora with KDE Plasma strikes the perfect balance between stability and customization. The true power, however, lies in the terminal. Mastering tools like awk, sed, and grep completely changed how I approach data processing. Before writing a complex Python script to manipulate a dataset, I now ask myself: 'Can a bash one-liner do this faster?' The answer is usually yes."
+  },
+  {
+    "id": 4,
+    "title": "Anomaly Detection: Isolation Forests vs LSTMs",
+    "date": "2026-03-02",
+    "content": "For my dissertation, I spent weeks comparing models for anomaly detection in structural logs. LSTMs are fantastic for sequence prediction, but they are incredibly resource-heavy and prone to overfitting on noisy log data. Switching the methodology to use Isolation Forests was a game-changer. By explicitly isolating anomalies rather than profiling normal instances, the model requires vastly less memory and training time while maintaining a remarkably high true-positive rate."
+  }
+]
