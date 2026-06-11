@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { About, Contact, Hero, Navbar, Tech, Works, Timeline, Layout, HB, Letters } from "./components";
+import { About, Contact, Hero, Navbar, Tech, Works, Timeline, Layout } from "./components";
 import { AuthProvider } from "./context/AuthContext";
 
 
@@ -40,8 +40,6 @@ const App = () => {
                 <Contact />
               </div>
             } />
-            <Route path="/letters" element={<Letters />} />
-            <Route path="/hb" element={<HB />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

@@ -1,53 +1,54 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SectionWrapper } from '../hoc'
 import { technologies } from '../constants'
 import { textVariant, fadeIn } from '../utils/motion'
-import { styles } from '../styles'
 
 const Tech = () => {
   const [techies] = useState(technologies);
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div className={`${styles.paddingY}`}>
-      <motion.div variants={textVariant()} id='technologies'>
-        <p className={styles.sectionSubText}>Technologies</p>
-        <h2 className={styles.sectionHeadText}>My Skills</h2>
+    // Wrapped in a flex column to push the grid down away from the header
+    <div className="w-full flex flex-col gap-12 md:gap-16">
+      
+      <motion.div variants={textVariant()} id='technologies' className="text-center w-full mb-8">
+        <p className={`text-slate-500 font-black uppercase tracking-widest text-sm sm:text-base`}>Technologies</p>
+        <h2 className={`text-slate-900 font-black md:text-[70px] sm:text-[60px] text-4xl uppercase tracking-tighter leading-[1.1] mt-2`}>
+            My Skills.
+        </h2>
       </motion.div>
       
-      <div className='flex flex-row flex-wrap w-full justify-center p-4 sm:p-8 md:p-16 items-center gap-x-6 gap-y-10 sm:gap-x-12 sm:gap-y-20'>
+      <div className='flex flex-row flex-wrap w-full justify-center items-center gap-6 sm:gap-16'>
         {techies.map((technology, index) => (
           <motion.div
             key={index}
-            variants={fadeIn("right", "spring", 0.1 * index, 1)}
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 1.15 }}  // Added for mobile touch
+            variants={fadeIn("up", "spring", 0.05 * index, 0.5)}
+            whileHover={{ y: -6 }}
+            whileTap={{ scale: 0.95 }}
             onMouseEnter={() => setHovered(index)}
             onMouseLeave={() => setHovered(null)}
-            onTouchStart={() => setHovered(index)}  // Mobile touch support
+            onTouchStart={() => setHovered(index)}
             onTouchEnd={() => setHovered(null)}
-            className="relative flex flex-col w-20 sm:w-32 md:w-44 items-center"
+            style={{ backgroundColor: technology.color || '#ffffff' }}
+            className="relative flex flex-col w-24 h-24 sm:w-28 sm:h-28 items-center justify-center border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] sm:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] hover:shadow-brutal rounded-xl transition-all cursor-pointer group"          
           >
             <img 
               src={technology.icon} 
-              className='w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 p-2 sm:p-3 bg-white rounded-full' 
+              className='w-8 h-8 sm:w-14 sm:h-14 object-contain grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300'
               alt={technology.name} 
             />
             
-            {/* Mobile: Always show name below icon, Desktop: Show on hover */}
-            <div className="sm:hidden mt-2 text-white text-xs text-center">
-              {technology.name}
+            <div className="sm:hidden mt-2 px-1 w-full text-slate-900 font-black text-[9px] text-center uppercase tracking-tighter leading-none truncate">
+             {technology.name}
             </div>
             
-            {/* Desktop hover tooltip */}
             {hovered === index && (
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="hidden sm:block absolute top-full mt-2 text-white text-sm sm:text-base px-3 py-1 bg-black/80 rounded shadow-lg whitespace-nowrap"
+                exit={{ opacity: 0, y: 10 }}
+                className="hidden sm:block absolute -top-12 text-slate-900 font-black uppercase text-xs px-3 py-1 bg-white border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] whitespace-nowrap z-20 pointer-events-none"
               >
                 {technology.name}
               </motion.div>
