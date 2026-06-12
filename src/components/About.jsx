@@ -1,72 +1,88 @@
-import React from 'react'
-import { Tilt } from 'react-tilt'
-import { motion } from 'framer-motion'
-import { services } from '../constants'
-import { fadeIn, textVariant } from '../utils/motion';
-import { SectionWrapper } from '../hoc'
+import { motion } from "framer-motion";
+import { services } from "../constants";
+import { fadeIn, textVariant } from "../utils/motion";
+import { SectionWrapper } from "../hoc";
 
-const ServiceCard = ({ index, title, icon }) => {
+const CapabilityCard = ({ index, title, description, accent }) => {
   return (
-    <Tilt options={{ reverse: true, max: 15, scale: 1.02, speed: 400 }} className="w-full sm:w-[250px] group">
-      <motion.div 
-        variants={fadeIn("up", "spring", 0.5 * index, 0.75)} 
-        // Increased padding inside the card and made hover elevation slightly higher
-        className='w-full bg-white border-4 border-slate-900 shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] hover:shadow-[12px_12px_0px_0px_rgba(15,23,42,1)] rounded-xl p-8 min-h-[250px] flex justify-evenly items-center flex-col transition-all group-hover:-translate-y-2'
-      >
-        <img 
-          src={icon} 
-          alt={title} 
-          className='w-20 h-20 object-contain grayscale opacity-80 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100'
-        />
-        <h3 className='text-slate-900 text-[18px] font-black uppercase tracking-tight text-center mt-6 border-b-4 border-transparent group-hover:border-red-500 transition-colors'>
-          {title}
-        </h3>
-      </motion.div>
-    </Tilt>
-  )
-}
+    <motion.div
+      variants={fadeIn("up", "spring", 0.3 * index, 0.75)}
+      className="w-full lg:w-[calc(33.333%-1.5rem)] flex group"
+    >
+      <div className="w-full bg-white border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] hover:shadow-[12px_12px_0px_0px_rgba(15,23,42,1)] rounded-xl p-6 sm:p-8 flex flex-col justify-start transition-all group-hover:-translate-y-2 overflow-hidden relative">
+        <div
+          className={`absolute top-0 left-0 w-full h-3 ${accent} border-b-4 border-slate-900 transition-transform origin-left group-hover:scale-y-150`}
+        ></div>
+
+        <div className="mt-4">
+          <span className="text-slate-400 font-mono font-bold text-sm mb-2 block">
+            0{index + 1} {"//"}
+          </span>
+          <h3 className="text-slate-900 text-xl sm:text-2xl font-black uppercase tracking-tight mb-4 border-b-4 border-transparent group-hover:border-slate-900 inline-block transition-colors">
+            {title}
+          </h3>
+          <p className="text-slate-600 font-bold text-sm sm:text-base leading-relaxed">
+            {description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const About = () => {
   return (
-    // Wrap everything in a flex column with a massive 16-unit gap between major block elements
     <div className="flex flex-col gap-12 md:gap-16">
-      
-      {/* Grid container for Header (Left) and Bio Box (Right) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        
-        {/* Header Block - Spans 4 Columns */}
-        <motion.div variants={textVariant()} id='about' className="lg:col-span-4 flex flex-col justify-center">
-          <p className={`text-slate-500 font-black uppercase tracking-widest text-sm sm:text-base`}>Introduction</p>
-          {/* Tighter line-height for a punchier headline */}
-          <h2 className={`text-slate-900 font-black md:text-[70px] sm:text-[60px] text-4xl uppercase tracking-tighter leading-[1.1] mt-2`}>
-              Overview.
+        <motion.div
+          variants={textVariant()}
+          id="about"
+          className="lg:col-span-4 flex flex-col justify-center"
+        >
+          <p
+            className={`text-slate-500 font-black uppercase tracking-widest text-sm sm:text-base`}
+          >
+            Introduction
+          </p>
+          <h2
+            className={`text-slate-900 font-black md:text-[70px] sm:text-[60px] text-5xl uppercase tracking-tighter leading-[1.1] mt-2`}
+          >
+            Overview.
           </h2>
         </motion.div>
 
-        {/* Bio Box - Spans 8 Columns. Anchors the text inside a heavy bento box */}
-        <motion.div 
-          variants={fadeIn("left", "spring", 0.2, 1)} 
-          className='lg:col-span-8 bg-white border-4 border-slate-900 shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] rounded-xl p-8 md:p-10 relative overflow-hidden' 
+        <motion.div
+          variants={fadeIn("left", "spring", 0.2, 1)}
+          className="lg:col-span-8 bg-white border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] rounded-xl p-6 sm:p-8 md:p-10 relative overflow-hidden"
         >
-          {/* Decorative red brutalist tab on the left inside edge */}
-          <div className="absolute top-0 left-0 w-4 h-full bg-red-500 border-r-4 border-slate-900"></div>
-          
-          <p className='text-slate-700 text-base sm:text-lg md:text-xl leading-relaxed font-bold pl-4 sm:pl-6'>
-            I'm a software developer focused on backend systems and data processing. My core stack runs on Linux, utilizing high-performance languages like Go and Python. I value minimalist, open-source environments and am currently dedicating my efforts to developing a Distinguishability-based Structural Log Parsing framework for anomaly detection.
-          </p>
-        </motion.div>
+          <div className="absolute top-0 left-0 w-3 sm:w-4 h-full bg-red-500 border-r-4 border-slate-900 z-10"></div>
 
+          <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none z-0"></div>
+
+          <div className="relative z-10 flex flex-col gap-4 text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed font-bold pl-4 sm:pl-6">
+            <p>
+              I engineer systems, not just websites. I specialize in
+              high-performance backend architecture, data processing, and
+              structural anomaly detection.
+            </p>
+            <p>
+              My philosophy is simple: write fast code, strip away bloated
+              dependencies, and build resilient solutions. Whether I am
+              architecting concurrent log parsers in Go, training isolation
+              forests in Python, or scripting raw command-line tools, I focus on
+              ruthless efficiency and scalable design.
+            </p>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Service Cards Container - Kept flush left to match the grid structure */}
-      <div className='flex flex-wrap gap-12 sm:gap-8 justify-center items-center mt-12 w-full'>
+      <div className="flex flex-col lg:flex-row flex-wrap gap-6 sm:gap-8 justify-between w-full mt-4">
         {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
+          <CapabilityCard key={service.title} index={index} {...service} />
         ))}
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default SectionWrapper(About, "about")
+export default SectionWrapper(About, "about");

@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 const Hero = () => {
   return (
     <AnimatePresence>
-      <section className="relative w-full min-h-screen lg:h-screen bg-[#fafafa] text-slate-900 font-mono flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 box-border overflow-hidden">
+      <section className="relative w-full min-h-screen lg:h-screen  text-slate-900 font-mono flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 box-border overflow-hidden">
         <div
           // 1. CHANGED: max-w-[96rem] is now max-w-7xl. This instantly cures the "empty warehouse" feeling.
           className={`max-w-[96rem] mx-auto w-full h-full flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-5`}
@@ -122,7 +122,6 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          {/* Scroll Indicator Block */}
           {/* Scroll Indicator Block - TERMINAL EXECUTION STYLE */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}

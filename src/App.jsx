@@ -37,7 +37,6 @@ const App = () => {
         />
         <meta name="author" content="Karan Maurya" />
 
-        <meta property="og:title" content="Karan Maurya - Software Developer" />
         <meta
           property="og:description"
           content="Portfolio of Karan Maurya, a software developer specializing in high-performance backend systems and anomaly detection architectures."
@@ -64,7 +63,7 @@ const App = () => {
             index
             element={
               // Ensuring the background color matches our light neo-brutalist theme
-              <main className="relative z-0 bg-[#fafafa]">
+              <main className="relative z-0 ">
                 {/* 4. The Suspense wrapper catches the lazy-loaded components and shows the CanvasLoader until they are ready */}
                 <Suspense fallback={<CanvasLoader />}>
                   <Hero />
