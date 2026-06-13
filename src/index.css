@@ -14,7 +14,7 @@
 
 /* Force light mode and set global background/text to match our brutalist theme */
 :root {
-  color-scheme: light;
+  color-scheme: dark light; /* Allows the browser to know we support both, but we'll force light mode */
 }
 
 html, body {

@@ -1,20 +1,22 @@
 import { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// 1. Import useLocation
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import Hero from "./components/Hero";
-// import DOMScanner from './components/DOMScanner';
+// 2. Import Framer Motion for the page transitions
+import { motion, AnimatePresence } from "framer-motion";
 
-// 2. Lazy load the heavy lifting components
-// const Hero = lazy(() => import("./components/Hero"));
+import Hero from "./components/Hero";
+
+// Lazy load the heavy lifting components
 const About = lazy(() => import("./components/About"));
 const Tech = lazy(() => import("./components/Tech"));
-const Works = lazy(() => import("./components/Works")); // Kept as 'Works' to match your JSX below
+const Works = lazy(() => import("./components/Works"));
 const Contact = lazy(() => import("./components/Contact"));
 const CommandPalette = lazy(() => import("./components/CommandPalette"));
 const BreachOverlay = lazy(() => import("./components/BreachOverlay"));
 const Timeline = lazy(() => import("./components/Blog/Timeline"));
 
-// 3. The Neo-Brutalist Loading Fallback
+// The Neo-Brutalist Loading Fallback
 const CanvasLoader = () => (
   <div className="w-full h-screen flex items-center justify-center bg-[#fafafa]">
     <div className="text-slate-900 font-black uppercase tracking-widest text-xl animate-pulse">
@@ -23,13 +25,81 @@ const CanvasLoader = () => (
   </div>
 );
 
+// 3. NEW: The Page Transition Wrapper
+// This adds a fast, deliberate "system refresh" effect when switching pages
+const PageTransition = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, filter: "blur(4px)" }}
+      // Entry: Delayed slightly to let the previous page exit
+      animate={{
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { duration: 0.4, delay: 0.1, ease: "linear" },
+      }}
+      // Exit: Fast and immediate
+      exit={{
+        opacity: 0,
+        filter: "blur(4px)",
+        transition: { duration: 0.2, ease: "linear" },
+      }}
+      className="w-full h-full"
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// 4. NEW: Extracted Route logic to track URL changes
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    // mode="wait" ensures the current page fully disappears BEFORE the new one loads
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {/* BLOG ROUTE */}
+        <Route
+          path="/blogs"
+          element={
+            <PageTransition>
+              {/* Added Suspense here since Timeline is lazy loaded */}
+              <Suspense fallback={<CanvasLoader />}>
+                <Timeline />
+              </Suspense>
+            </PageTransition>
+          }
+        />
+
+        {/* MAIN SPA ROUTE */}
+        <Route
+          index
+          element={
+            <PageTransition>
+              <main className="relative z-0">
+                <Suspense fallback={<CanvasLoader />}>
+                  <CommandPalette />
+                  <BreachOverlay />
+                  <Hero />
+                  <About />
+                  <Tech />
+                  <Works />
+                  <Contact />
+                </Suspense>
+              </main>
+            </PageTransition>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 const App = () => {
   return (
     <HelmetProvider>
       <Helmet>
         <title>Karan Maurya - Software Developer</title>
-
-        {/* Updated SEO to reflect your actual systems-level expertise */}
         <meta
           name="description"
           content="Karan Maurya - Software Developer focused on backend systems, data processing, and anomaly detection. Core stack: Go, Python, Linux."
@@ -39,15 +109,12 @@ const App = () => {
           content="Karan Maurya, Software Developer, Backend, Go, Golang, Python, Linux, Structural Log Parsing, Systems Engineering, Portfolio"
         />
         <meta name="author" content="Karan Maurya" />
-
         <meta
           property="og:description"
           content="Portfolio of Karan Maurya, a software developer specializing in high-performance backend systems and anomaly detection architectures."
         />
         <meta property="og:url" content="https://mauryakaran.com" />
         <meta property="og:type" content="website" />
-
-        {/* Security Headers */}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -59,34 +126,14 @@ const App = () => {
         <meta name="X-Frame-Options" content="SAMEORIGIN" />
       </Helmet>
 
+      {/* 5. Cleaned up main App return */}
       <BrowserRouter
         future={{
           v7_startTransition: true,
           v7_relativeSplatPath: true,
         }}
       >
-        <Routes>
-          <Route path="/blogs" element={<Timeline />} />
-          <Route
-            index
-            element={
-              // Ensuring the background color matches our light neo-brutalist theme
-              <main className="relative z-0 ">
-                {/* <DOMScanner /> */}
-                {/* 4. The Suspense wrapper catches the lazy-loaded components and shows the CanvasLoader until they are ready */}
-                <Suspense fallback={<CanvasLoader />}>
-                  <CommandPalette />
-                  <BreachOverlay />
-                  <Hero />
-                  <About />
-                  <Tech />
-                  <Works />
-                  <Contact />
-                </Suspense>
-              </main>
-            }
-          />
-        </Routes>
+        <AnimatedRoutes />
       </BrowserRouter>
     </HelmetProvider>
   );

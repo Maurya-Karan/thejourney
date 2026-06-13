@@ -1,15 +1,9 @@
-import logo from "./logo.svg";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-import blogbg from "./blog_bg.svg";
 import css from "./tech/css.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
+import docker from "./tech/docker.webp";
+import figma from "./tech/figma.webp";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
@@ -19,11 +13,9 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
 import java from "./tech/java.png";
-import cpp from "./tech/cpp.png";
+import cpp from "./tech/cpp.webp";
 import python from "./tech/python.png";
-import profile from "./profile.png";
 import express from "./tech/express.png";
 
 import nextjs from "./tech/nextjs.png";
@@ -36,18 +28,11 @@ import gemini from "./tech/gemini.jpg";
 
 import meta from "./company/meta.png";
 
-import ascii_home from "./ascii_home.png";
+import ascii_home from "./ascii_home.webp";
 import linkedin from "./company/linkedin.png";
 import email from "./company/email.png";
-import karan2 from "./karan2.jpeg";
-import karan from "./karan.png";
+import karan from "./karan3.webp";
 export {
-  blogbg,
-  logo,
-  backend,
-  creator,
-  mobile,
-  web,
   github,
   menu,
   email,
@@ -64,7 +49,6 @@ export {
   redux,
   tailwind,
   typescript,
-  threejs,
   java,
   cpp,
   python,
@@ -79,6 +63,4 @@ export {
   ascii_home,
   linkedin,
   karan,
-  karan2,
-  profile,
 };
