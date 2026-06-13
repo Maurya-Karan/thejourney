@@ -32,11 +32,10 @@ const CapabilityCard = ({ index, title, description, accent }) => {
 
 const About = () => {
   return (
-    <div className="flex flex-col gap-12 md:gap-16">
+    <div className="flex flex-col gap-12 md:gap-16" id="about">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         <motion.div
           variants={textVariant()}
-          id="about"
           className="lg:col-span-4 flex flex-col justify-center"
         >
           <p

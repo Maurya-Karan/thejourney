@@ -26,7 +26,7 @@ const ProjectCard = ({ index, name, description, image, source_code_link }) => {
         extending the shadow heavily to simulate physically pulling a hardware rack.
       */}
       <div
-        className={`group relative bg-white border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] rounded-xl p-6 sm:p-8 flex flex-col w-full h-full transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-3 hover:-translate-x-3 hover:shadow-[10px_10px_0px_0px_rgba(15,23,42,1)] md:hover:shadow-[20px_20px_0px_0px_rgba(15,23,42,1)] cursor-pointer ${isFeatured ? "lg:flex-row lg:gap-8" : ""}`}
+        className={`group relative bg-white border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] rounded-xl p-6 sm:p-8 flex flex-col w-full h-full transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-3 hover:-translate-x-3 hover:shadow-[10px_10px_0px_0px_rgba(15,23,42,1)] md:hover:shadow-[20px_20px_0px_0px_rgba(15,23,42,1)]  ${isFeatured ? "lg:flex-row lg:gap-8" : ""}`}
       >
         {/* Visual Container */}
         <div
@@ -60,7 +60,7 @@ const ProjectCard = ({ index, name, description, image, source_code_link }) => {
                 window.open(source_code_link, "_blank");
               }}
               // The button rotates 12 degrees on hover like a physical key being turned
-              className="w-10 h-10 bg-white border-4 border-slate-900 rounded-full flex justify-center items-center hover:bg-slate-900 hover:scale-110 group/btn transition-all shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] group-hover:-rotate-12 duration-300"
+              className="w-10 h-10 bg-white border-4 border-slate-900 rounded-full flex justify-center items-center hover:bg-slate-900 hover:scale-110 group/btn transition-all shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] group-hover:-rotate-12 duration-300 cursor-external"
             >
               <img
                 src={github}

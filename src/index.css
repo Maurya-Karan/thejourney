@@ -29,7 +29,58 @@ body {
   background-size: 32px 32px;
   color: #0f172a; 
   font-family: "Space Mono", monospace; 
+  /* cursor: cell; */
+  cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M11 21L4 4L21 11L14.7353 13.6849C14.2633 13.8872 13.8872 14.2633 13.6849 14.7353L11 21Z" stroke="%230f172a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>') 4 4, auto;
 }
+
+a, button, [role="button"], .cursor-pointer {
+  cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23facc15" xmlns="http://www.w3.org/2000/svg"><path d="M11 21L4 4L21 11L14.7353 13.6849C14.2633 13.8872 13.8872 14.2633 13.6849 14.7353L11 21Z" stroke="%230f172a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>') 4 4, pointer;
+}
+
+a[target="_blank"], .cursor-external {
+  cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="%233b82f6" xmlns="http://www.w3.org/2000/svg"><path d="M11 21L4 4L21 11L14.7353 13.6849C14.2633 13.8872 13.8872 14.2633 13.6849 14.7353L11 21Z" stroke="%230f172a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>') 4 4, pointer !important;
+}
+
+
+.cursor-crit {
+  cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" fill="%23ef4444" xmlns="http://www.w3.org/2000/svg"><path d="M11 21L4 4L21 11L14.7353 13.6849C14.2633 13.8872 13.8872 14.2633 13.6849 14.7353L11 21Z" stroke="%230f172a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>') 4 4, pointer !important;
+}
+
+
+::selection {
+  background-color: #facc15; 
+  color: #0f172a;
+}
+::-moz-selection {
+  background-color: #facc15;
+  color: #0f172a;
+}
+
+
+
+/* --------------------------------------
+   4. STRUCTURAL SCROLLBAR
+--------------------------------------- */
+/* The physical track */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #fafafa;
+  border-left: 2px solid #0f172a;
+}
+
+/* The solid thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #0f172a;
+  border: 2px solid #0f172a;
+}
+
+/* Snaps to red when grabbed, mimicking the cursor logic */
+::-webkit-scrollbar-thumb:hover, 
+::-webkit-scrollbar-thumb:active {
+  background-color: #ef4444; 
+}
+
+
 
 /* Utility classes for layout */
 .hash-span {

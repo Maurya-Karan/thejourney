@@ -29,7 +29,7 @@ const Navbar = () => {
         {navLinks.map((link) => (
           <li
             key={link.id}
-            className={`${active === link.title ? "text-white" : "text-slate-900"} hover:text-white text-xs lg:text-sm font-black uppercase tracking-widest cursor-pointer transition-colors duration-200`}
+            className={`${active === link.title ? "text-red-500" : "text-slate-900"} hover:text-red-500 text-xs lg:text-sm font-black uppercase tracking-widest cursor-pointer transition-colors duration-200`}
             onClick={() => setActive(link.title)}
           >
             <a
@@ -45,12 +45,12 @@ const Navbar = () => {
         ))}
 
         <li
-          className={`hover:text-white text-slate-900 font-black uppercase tracking-widest cursor-pointer text-xs lg:text-sm transition-colors duration-200`}
+          className={`hover:text-red-500 text-slate-900 font-black uppercase tracking-widest cursor-pointer text-xs lg:text-sm transition-colors duration-200`}
         >
           <Link to="/blogs">Blogs</Link>
         </li>
         <li
-          className={`hover:text-white text-slate-900 font-black uppercase tracking-widest cursor-pointer text-xs lg:text-sm transition-colors duration-200`}
+          className={`hover:text-red-500 text-slate-900 font-black uppercase tracking-widest cursor-pointer text-xs lg:text-sm transition-colors duration-200`}
         >
           <a href="/resume.pdf" download={"karanResume.pdf"}>
             Resume
@@ -79,7 +79,7 @@ const Navbar = () => {
                 {navLinks.map((link) => (
                   <li
                     key={link.id}
-                    className={`${active === link.id ? "text-white" : "text-slate-900"} border-b-4 border-slate-100 pb-2 w-full font-black uppercase tracking-wide cursor-pointer text-[14px] hover:border-red-200 transition-colors duration-200`}
+                    className={`${active === link.id ? "text-red-500" : "text-slate-900"} border-b-4 border-slate-100 pb-2 w-full font-black uppercase tracking-wide cursor-pointer text-[14px] hover:border-red-200 transition-colors duration-200`}
                     onClick={() => {
                       setToggle(!toggle);
                       setActive(link.id);
@@ -90,14 +90,14 @@ const Navbar = () => {
                 ))}
 
                 <li
-                  className={`hover:text-white text-slate-900 border-b-4 border-slate-100 pb-2 w-full font-black uppercase tracking-wide cursor-pointer text-[14px] hover:border-red-200 transition-colors duration-200`}
+                  className={`hover:text-red-500 text-slate-900 border-b-4 border-slate-100 pb-2 w-full font-black uppercase tracking-wide cursor-pointer text-[14px] hover:border-red-200 transition-colors duration-200`}
                   onClick={() => setToggle(!toggle)}
                 >
                   <Link to="/blogs">Blogs</Link>
                 </li>
 
                 <li
-                  className={`hover:text-white text-slate-900 border-b-4 border-slate-100 pb-2 w-full font-black uppercase tracking-wide cursor-pointer text-[14px] hover:border-red-200 transition-colors duration-200`}
+                  className={`hover:text-red-500 text-slate-900 border-b-4 border-slate-100 pb-2 w-full font-black uppercase tracking-wide cursor-pointer text-[14px] hover:border-red-200 transition-colors duration-200`}
                 >
                   <a href="/resume.pdf" download={"karanResume.pdf"}>
                     Resume

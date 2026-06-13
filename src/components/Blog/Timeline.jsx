@@ -3,7 +3,6 @@ import blogs from "../../constants/blogs.json";
 import { TbArrowRightToArc, TbArrowLeftToArc } from "react-icons/tb";
 
 import { Link } from "react-router-dom";
-import { logo } from "../../assets";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Timeline() {
@@ -65,9 +64,9 @@ function Timeline() {
             <Link to="/" className="flex items-center group">
               {/* Filter added so logo matches the stark aesthetic */}
               <img
-                src={logo}
+                src={"/favicon.ico"}
                 alt="logo"
-                className="h-8 object-contain mr-1 brightness-0  group-hover:scale-110 transition-all"
+                className="h-8 object-contain mr-1 group-hover:scale-110 transition-all"
               />
             </Link>
           </motion.div>

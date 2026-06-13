@@ -63,12 +63,12 @@ const TechModule = ({ title, techs, index }) => {
             key={i}
             onMouseEnter={() => setHovered(i)}
             onMouseLeave={() => setHovered(null)}
-            style={{ backgroundColor: technology.color || "#ffffff" }}
-            className="relative flex flex-col w-16 h-16 sm:w-20 sm:h-20 items-center justify-center border-2 border-slate-900 hover:shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:-translate-y-1 rounded-lg transition-all cursor-pointer group"
+            style={{ backgroundColor: "#ffffff" }}
+            className="relative flex flex-col w-16 h-16 sm:w-20 sm:h-20 items-center justify-center border-4 border-slate-900 hover:shadow-[6px_6px_0px_0px_rgba(15,23,42,1)] hover:-translate-y-1 rounded-lg transition-all  group"
           >
             <img
               src={technology.icon}
-              className="w-8 h-8 sm:w-10 sm:h-10 object-contain grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain brightness-75 grayscale opacity-90 group-hover:brightness-100 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-125"
               alt={technology.name}
             />
 
@@ -91,12 +91,8 @@ const TechModule = ({ title, techs, index }) => {
 
 const Tech = () => {
   return (
-    <div className="w-full flex flex-col gap-12 md:gap-16">
-      <motion.div
-        variants={textVariant()}
-        id="technologies"
-        className="text-center w-full"
-      >
+    <div className="w-full flex flex-col gap-12 md:gap-16" id="tech">
+      <motion.div variants={textVariant()} className="text-center w-full">
         <p
           className={`text-slate-500 font-black uppercase tracking-widest text-sm sm:text-base`}
         >

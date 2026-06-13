@@ -1,153 +1,226 @@
+import { lazy } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { karan } from "../assets";
 import { contacts } from "../constants";
 import Navbar from "./Navbar";
 
+const Terminal = lazy(() => import("./Terminal"));
+
 const Hero = () => {
+  // --- THE BOOT SEQUENCE VARIANTS ---
+  // Using rigid spring physics so the boxes "snap" into place like heavy hardware
+  const bootSpring = { type: "spring", bounce: 0.3, duration: 0.8 };
+
+  const varMonitorPower = {
+    hidden: { opacity: 0, scale: 0.98, filter: "blur(4px)" },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { ...bootSpring, delay: 0.1 },
+    },
+  };
+
+  const varDrawerLeft = {
+    hidden: { opacity: 0, x: -40 },
+    visible: (customDelay) => ({
+      opacity: 1,
+      x: 0,
+      transition: { ...bootSpring, delay: customDelay },
+    }),
+  };
+
+  const varDrawerRight = {
+    hidden: { opacity: 0, x: 40 },
+    visible: (customDelay) => ({
+      opacity: 1,
+      x: 0,
+      transition: { ...bootSpring, delay: customDelay },
+    }),
+  };
+
+  const varDropTop = {
+    hidden: { opacity: 0, y: -40 },
+    visible: (customDelay) => ({
+      opacity: 1,
+      y: 0,
+      transition: { ...bootSpring, delay: customDelay },
+    }),
+  };
+
+  const varDropBottom = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (customDelay) => ({
+      opacity: 1,
+      y: 0,
+      transition: { ...bootSpring, delay: customDelay },
+    }),
+  };
+
   return (
     <AnimatePresence>
-      <section className="relative w-full min-h-screen lg:h-screen  text-slate-900 font-mono flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 box-border overflow-hidden">
+      <section
+        className="relative w-full min-h-screen lg:h-screen text-slate-900 font-mono flex flex-col p-4 sm:p-5 md:p-6 lg:p-8 box-border overflow-hidden"
+        id="hero"
+      >
         <div
-          // 1. CHANGED: max-w-[96rem] is now max-w-7xl. This instantly cures the "empty warehouse" feeling.
-          className={`max-w-[96rem] mx-auto w-full h-full flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-5`}
-          style={{
-            gridTemplateRows:
-              window.innerWidth >= 768 ? "repeat(7, minmax(0, 1fr))" : "none",
-          }}
+          className={`max-w-[96rem] mx-auto w-full h-full flex flex-col md:grid md:grid-cols-12 md:grid-rows-7 gap-4 md:gap-5`}
         >
-          {/* Row 1: Navbar Block */}
-          <div className="md:col-start-9 md:col-end-13 md:row-start-1 md:row-end-2 bg-red-500 rounded-xl border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] p-2 sm:p-4 flex items-center justify-center z-20">
-            <Navbar />
-          </div>
-
-          {/* Main Intro Block - CREATIVE COMPOSITION */}
+          {/* Row 1: Navbar Block (Drops from top) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring" }}
+            initial="hidden"
+            animate="visible"
+            variants={varDropTop}
+            custom={0.5}
+            className="md:col-start-9 md:col-end-13 md:row-start-1 md:row-end-2 bg-white rounded-xl border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] p-2 sm:p-4 flex items-center justify-center z-20"
+          >
+            <Navbar />
+          </motion.div>
+
+          {/* Main Intro Block (Powers on from center) */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={varMonitorPower}
             className="md:col-start-1 md:col-end-9 md:row-start-1 md:row-end-5 bg-white rounded-xl p-8 lg:p-12 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center relative overflow-hidden"
           >
-            {/* Added a subtle grid pattern to the background of just this box to kill dead space */}
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-4 uppercase z-10">
-              Hi, I&apos;m <span className="text-red-500">Karan</span>.
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-1 uppercase z-10">
+              Hi, <br />
+              I&apos;m <span className="text-red-500">Karan</span>.
             </h1>
 
-            {/* A thick, brutalist geometric divider to anchor the text */}
-            <div className="w-20 h-4 bg-slate-900 mb-6 z-10"></div>
+            <div
+              className="w-44 h-4 bg-red-500 mb-10
+             z-10"
+            ></div>
 
-            <p className="text-lg sm:text-2xl lg:text-3xl text-slate-700 font-bold max-w-2xl leading-relaxed z-10">
-              I architect backend systems, build scalable data pipelines, and
-              forge fast CLI utilities.
+            <p className="text-lg sm:text-2xl lg:text-2xl text-slate-700 font-bold max-w-4xl leading-relaxed z-10">
+              I build backend systems, AI infrastructure, and Linux-powered
+              tools.
             </p>
           </motion.div>
 
-          {/* Profile Image Block */}
+          {/* Terminal Block (Snaps from right) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, type: "spring", ease: "easeOut" }}
-            className="md:col-start-9 md:col-end-13 md:row-start-2 md:row-end-6 bg-[#915eff] rounded-xl border-4 border-slate-900 overflow-hidden shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] relative min-h-[250px]"
+            initial="hidden"
+            animate="visible"
+            variants={varDrawerRight}
+            custom={0.3}
+            className="md:col-start-9 md:col-end-13 md:row-start-2 md:row-end-6 flex"
           >
-            <img
-              src={karan}
-              alt="Karan"
-              className="absolute inset-0 w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500 opacity-90 hover:opacity-100"
-            />
+            <Terminal />
           </motion.div>
 
-          {/* Tech Stack Block - TERMINAL LIST STYLE */}
+          {/* Tech Stack Block (Snaps from left) */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring", delay: 0.2 }}
-            className="md:col-start-1 md:col-end-5 md:row-start-5 md:row-end-8 bg-slate-900 text-white rounded-xl p-5 sm:p-8 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center min-h-[120px]"
+            initial="hidden"
+            animate="visible"
+            variants={varDrawerLeft}
+            custom={0.4}
+            className="md:col-start-1 md:col-end-5 md:row-start-5 md:row-end-8 bg-white text-slate-900 rounded-xl p-5 sm:p-8 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center"
           >
-            <h3 className="text-xs sm:text-sm font-black uppercase tracking-widest text-slate-400 mb-4 border-b-2 border-slate-700 pb-1 inline-block w-max">
-              System.Stack
+            <h3 className="text-xs sm:text-lg font-black uppercase tracking-tight mb-4 border-b-4 border-green-500 text-slate-900 inline-block w-max pr-2">
+              System Stack
             </h3>
-            <div className="flex flex-col gap-2 font-mono text-sm sm:text-base font-bold text-green-400">
-              <div className="flex items-center gap-3">
-                <span className="text-slate-500">❯</span> Go
+
+            <div className="space-y-4">
+              <div>
+                <p className="text-base font-bold uppercase tracking-widest text-slate-700 mb-1">
+                  Languages & Core
+                </p>
+                <p className="font-semibold text-sm text-slate-700">
+                  Go · Python · C/C++ · Java · SQL
+                </p>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-slate-500">❯</span> Python
+              <div>
+                <p className="text-base font-bold uppercase tracking-widest text-slate-700 mb-1">
+                  Web & Infrastructure
+                </p>
+                <p className="font-semibold text-sm text-slate-700">
+                  React.js · Next.js · Node.js · AWS EC2 · Docker
+                </p>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-slate-500">❯</span> Java & Linux
+              <div>
+                <p className="text-base font-bold uppercase tracking-widest text-slate-700 mb-1">
+                  Data & Tooling
+                </p>
+                <p className="font-semibold text-sm text-slate-700">
+                  Pandas · NumPy · Scikit-learn · Linux · Git
+                </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Ethos Block - HIGHLIGHTER STYLE */}
+          {/* Ethos Block (Snaps from left) */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring", delay: 0.3 }}
-            className="md:col-start-5 md:col-end-9 md:row-start-5 md:row-end-7 bg-white rounded-xl p-5 sm:p-6 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center min-h-[120px]"
+            initial="hidden"
+            animate="visible"
+            variants={varDropBottom}
+            custom={0.5}
+            className="md:col-start-5 md:col-end-9 md:row-start-5 md:row-end-7 bg-white rounded-xl p-5 sm:p-8 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-col justify-center min-h-[120px]"
           >
-            <h3 className="text-xs sm:text-base font-black uppercase tracking-tight mb-2 border-b-4 border-red-500 text-slate-900 inline-block w-max pr-2">
+            <h3 className="text-base sm:text-lg font-black uppercase tracking-tight mb-2 border-b-4 border-yellow-500 text-slate-900 inline-block w-max pr-2">
               Engineering Ethos
             </h3>
-            <p className="font-bold text-sm sm:text-base lg:text-lg leading-tight text-slate-700">
-              Write{" "}
-              <span className="bg-[#facc15] px-1 text-slate-900">
-                fast code
-              </span>
-              . Minimize dependencies. Stay in the terminal.
-            </p>
+            <ul className="font-black text-sm sm:text-base lg:text-base text-slate-700 list-disc list-inside leading-relaxed">
+              <li>Simplicity first</li>
+              <li>Automate repetitive work</li>
+              <li>Measure before optimizing</li>
+              <li>Learn by building</li>
+            </ul>
           </motion.div>
 
-          {/* Social Links Block */}
+          {/* Social Links Block (Snaps from bottom left) */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring", delay: 0.1 }}
-            className="md:col-start-5 md:col-end-9 md:row-start-7 md:row-end-8 bg-[#facc15] rounded-xl p-3 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-row justify-evenly items-center gap-2 min-h-[60px]"
+            initial={{ opacity: 0, y: 30, x: -20 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ ...bootSpring, delay: 0.6 }}
+            className="md:col-start-5 md:col-end-9 md:row-start-7 md:row-end-8 bg-white rounded-xl p-3 pr-10 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] flex flex-row justify-around items-center gap-2 min-h-[60px]"
           >
+            <p className="font-bold text-lg text-slate-800 border-b-4 border-blue-500">
+              CONNECT
+            </p>
             {contacts.map((contact, index) => (
               <a
                 key={index}
+                target="_blank"
+                rel="noreferrer"
                 href={contact.source_link}
                 className="group hover:-translate-y-1 transition-transform duration-200"
               >
-                {/* Icons turn white on hover instead of natural colors to match the red background */}
                 <img
                   src={contact.icon}
                   alt="social"
-                  className="w-6 h-6  opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110"
+                  className="w-6 h-6 opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:scale-110"
                 />
               </a>
             ))}
           </motion.div>
 
-          {/* Scroll Indicator Block - TERMINAL EXECUTION STYLE */}
+          {/* Scroll Indicator Block (Snaps from right) */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring", delay: 0.4 }}
+            initial="hidden"
+            animate="visible"
+            variants={varDrawerRight}
+            custom={0.6}
             className="hidden sm:flex md:col-start-9 md:col-end-13 md:row-start-6 md:row-end-8 bg-slate-900 rounded-xl p-5 border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] group cursor-pointer hover:bg-slate-800 transition-colors min-h-[120px]"
           >
             <a
               href="#about"
               className="flex flex-col items-start justify-center w-full h-full gap-2 overflow-hidden"
             >
-              {/* Live System Status Pulse */}
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                 <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase">
                   Sys.Status: Online
                 </span>
               </div>
-
-              {/* Terminal Command Execution */}
               <div className="flex items-center gap-3">
                 <span className="text-red-500 font-bold">❯</span>
                 <span className="text-sm sm:text-base font-black tracking-widest text-white group-hover:text-[#facc15] transition-colors">
                   ./scroll_down
                 </span>
-                {/* Yellow Blinking Block Cursor */}
                 <motion.div
                   animate={{ opacity: [1, 0, 1] }}
                   transition={{
@@ -158,17 +231,6 @@ const Hero = () => {
                   className="w-2.5 h-4 sm:h-5 bg-[#facc15]"
                 />
               </div>
-
-              {/* Heavy Brutalist Bouncing Arrow
-              <motion.div 
-                animate={{ y: [0, 6, 0] }} 
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="ml-6 mt-1 text-slate-500 font-black text-lg group-hover:text-red-500 transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>  
-              </motion.div> */}
             </a>
           </motion.div>
         </div>

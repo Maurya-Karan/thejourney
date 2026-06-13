@@ -23,7 +23,7 @@ import threejs from "./tech/threejs.svg";
 import java from "./tech/java.png";
 import cpp from "./tech/cpp.png";
 import python from "./tech/python.png";
-
+import profile from "./profile.png";
 import express from "./tech/express.png";
 
 import nextjs from "./tech/nextjs.png";
@@ -80,5 +80,5 @@ export {
   linkedin,
   karan,
   karan2,
-
+  profile,
 };

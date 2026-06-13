@@ -16,7 +16,7 @@ const ServiceCard = ({ index, title, icon, source_link, color }) => {
         aria-label={`Visit my ${title}`}
         style={{ backgroundColor: color || "#ffffff" }}
         // Mechanical switch physics adapted to fill a CSS grid perfectly
-        className="w-full h-full border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] hover:shadow-[0px_0px_0px_0px_rgba(15,23,42,1)] hover:translate-y-[4px] md:hover:translate-y-[8px] hover:translate-x-[4px] md:hover:translate-x-[8px] rounded-xl transition-all overflow-hidden p-6 sm:p-8 min-h-[160px] sm:min-h-[200px] flex justify-center items-center flex-col gap-4 sm:gap-6 block"
+        className="w-full h-full border-4 border-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] md:shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] hover:shadow-[0px_0px_0px_0px_rgba(15,23,42,1)] hover:translate-y-[4px] md:hover:translate-y-[8px] hover:translate-x-[4px] md:hover:translate-x-[8px] rounded-xl transition-all overflow-hidden p-6 sm:p-8 min-h-[160px] sm:min-h-[200px] flex justify-center items-center flex-col gap-4 sm:gap-6 "
       >
         <img
           src={icon}
@@ -35,11 +35,10 @@ const ServiceCard = ({ index, title, icon, source_link, color }) => {
 
 const Contact = () => {
   return (
-    <div className="w-full flex flex-col gap-12 md:gap-16 mb-20">
+    <div className="w-full flex flex-col gap-12 md:gap-16 mb-20" id="contact">
       {/* Clever Backend-Themed Header */}
       <motion.div
         variants={textVariant()}
-        id="contact"
         className="flex flex-col justify-center text-center sm:text-left"
       >
         <p

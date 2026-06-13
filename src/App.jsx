@@ -1,15 +1,18 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-// 1. Keep only the components that need to load instantly (like Navbar or Layout) in the static imports
-import { Timeline } from "./components";
+import Hero from "./components/Hero";
+// import DOMScanner from './components/DOMScanner';
 
 // 2. Lazy load the heavy lifting components
-const Hero = lazy(() => import("./components/Hero"));
+// const Hero = lazy(() => import("./components/Hero"));
 const About = lazy(() => import("./components/About"));
 const Tech = lazy(() => import("./components/Tech"));
 const Works = lazy(() => import("./components/Works")); // Kept as 'Works' to match your JSX below
 const Contact = lazy(() => import("./components/Contact"));
+const CommandPalette = lazy(() => import("./components/CommandPalette"));
+const BreachOverlay = lazy(() => import("./components/BreachOverlay"));
+const Timeline = lazy(() => import("./components/Blog/Timeline"));
 
 // 3. The Neo-Brutalist Loading Fallback
 const CanvasLoader = () => (
@@ -56,7 +59,12 @@ const App = () => {
         <meta name="X-Frame-Options" content="SAMEORIGIN" />
       </Helmet>
 
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <Routes>
           <Route path="/blogs" element={<Timeline />} />
           <Route
@@ -64,8 +72,11 @@ const App = () => {
             element={
               // Ensuring the background color matches our light neo-brutalist theme
               <main className="relative z-0 ">
+                {/* <DOMScanner /> */}
                 {/* 4. The Suspense wrapper catches the lazy-loaded components and shows the CanvasLoader until they are ready */}
                 <Suspense fallback={<CanvasLoader />}>
+                  <CommandPalette />
+                  <BreachOverlay />
                   <Hero />
                   <About />
                   <Tech />
