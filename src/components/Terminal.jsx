@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 // IMPORT YOUR LOCAL DATABASE
 import blogsData from "../constants/blogs.json";
-
-import photo2 from "../assets/karan3.png";
+import { karan } from "../assets";
+import { useNavigate } from "react-router-dom";
 
 // THE DYNAMIC LOG FETCHER COMPONENT
 const LiveLogFetcher = () => {
@@ -72,7 +72,7 @@ const Terminal = () => {
   ]);
   const [input, setInput] = useState("");
   const [pwd, setPwd] = useState("~");
-
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -175,12 +175,9 @@ const Terminal = () => {
 
     whoami: () => (
       <div className="text-slate-300">
-        <p className="text-white font-bold mb-1">
-          Karan Maurya{" "}
-          <span className="text-slate-500 font-normal">[ID: 24MCA0260]</span>
-        </p>
+        <p className="text-white font-bold mb-1">Karan Maurya </p>
         <p>
-          Systems Engineer & MCA Student. Advocate for the Linux ecosystem and
+          Systems Engineer & MCA Graduate. Advocate for the Linux ecosystem and
           minimalist digital environments.
         </p>
       </div>
@@ -250,7 +247,7 @@ const Terminal = () => {
               className="w-48 h-48 sm:w-64 sm:h-64 border-4 border-slate-700 bg-slate-900 p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)]  transition-transform duration-300"
             >
               <img
-                src={photo2} // Use the imported variable here!
+                src={karan} // Use the imported variable here!
                 alt="Karan Maurya"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
@@ -329,7 +326,7 @@ const Terminal = () => {
       const target = args[0].toLowerCase();
 
       if (target === "blogs") {
-        setTimeout(() => (window.location.href = "/blogs"), 1200);
+        setTimeout(() => navigate("/blogs"), 1200);
         return (
           <div className="flex flex-col text-[#22c55e]">
             <span>Resolving hostname {target}...</span>
