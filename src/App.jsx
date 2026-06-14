@@ -97,19 +97,19 @@ const App = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Karan Maurya - Software Developer</title>
+        <title>Karan Maurya - Software Engineer</title>
         <meta
           name="description"
-          content="Karan Maurya - Software Developer focused on backend systems, data processing, and anomaly detection. Core stack: Go, Python, Linux."
+          content="Portfolio of Karan Maurya, a Backend & Full-Stack Engineer building fast, concurrent systems and modern web applications with Go, Java, React, and AWS."
         />
         <meta
           name="keywords"
-          content="Karan Maurya, Software Developer, Backend, Go, Golang, Python, Linux, Structural Log Parsing, Systems Engineering, Portfolio"
+          content="Karan Maurya, Software Engineer, Backend, Go, Golang, Python, Linux, Structural Log Parsing, Systems Engineering, Portfolio, Karan, Maurya, full-stack, developer"
         />
         <meta name="author" content="Karan Maurya" />
         <meta
           property="og:description"
-          content="Portfolio of Karan Maurya, a software developer specializing in high-performance backend systems and anomaly detection architectures."
+          content="Portfolio of Karan Maurya, a software engineer specializing in high-performance backend systems and anomaly detection architectures."
         />
         <meta property="og:url" content="https://mauryakaran.com" />
         <meta property="og:type" content="website" />
