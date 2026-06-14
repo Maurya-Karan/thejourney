@@ -4,40 +4,45 @@ import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { textVariant, fadeIn } from "../utils/motion";
 
-// We dynamically group your existing array so you don't have to rewrite constants/index.js
 const categorizedTech = [
   {
     title: "SYS.LANG",
-    // Filters match the exact names from your constants
+    // Core high-performance and scripting languages
     items: technologies.filter((t) =>
-      ["Java", "C++", "Python", "JavaScript", "Typescript"].includes(t.name),
+      ["Go", "Java", "Python", "C/C++"].includes(t.name),
     ),
   },
   {
     title: "SYS.DATA_BACK",
+    // Backend runtime, frameworks, and databases
     items: technologies.filter((t) =>
-      ["Node JS", "Express JS", "MongoDB", "MySQL", "Oracle SQL"].includes(
+      ["Node JS", "Express JS", "MongoDB", "MySQL", "PostgreSQL"].includes(
         t.name,
       ),
     ),
   },
   {
     title: "SYS.FRONTEND",
+    // Modern, lean frontend stack
     items: technologies.filter((t) =>
-      ["HTML 5", "CSS 3", "React JS", "Tailwind CSS", "Next.js"].includes(
+      ["React JS", "Next.js", "Tailwind CSS", "HTML 5", "CSS 3"].includes(
         t.name,
       ),
     ),
   },
   {
-    title: "SYS.OPS_TOOLS",
+    title: "SYS.INFRA_TOOLS",
+    // Environments, containerization, cloud, and integrations
     items: technologies.filter((t) =>
       [
+        "Linux",
+        "Docker",
+        "AWS",
         "Git",
         "GitHub",
         "Cloudinary",
         "JWT",
-        "Google Generative Language API",
+        "Gemini API",
       ].includes(t.name),
     ),
   },

@@ -60,7 +60,7 @@ const ProjectCard = ({ index, name, description, image, source_code_link }) => {
                 window.open(source_code_link, "_blank");
               }}
               // The button rotates 12 degrees on hover like a physical key being turned
-              className="w-10 h-10 bg-white border-4 border-slate-900 rounded-full flex justify-center items-center hover:bg-slate-900 hover:scale-110 group/btn transition-all shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] group-hover:-rotate-12 duration-300 cursor-external"
+              className="w-10 h-10 bg-white border-4 border-slate-900 rounded-full flex justify-center items-center hover:bg-slate-900 hover:scale-110 group/btn transition-all shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] rotate-45 group-hover:rotate-0 duration-300 cursor-external"
             >
               <img
                 src={github}
@@ -97,8 +97,6 @@ const ProjectCard = ({ index, name, description, image, source_code_link }) => {
     </motion.div>
   );
 };
-
-// ... keep the rest of your Work.jsx the same
 
 const Work = () => {
   return (

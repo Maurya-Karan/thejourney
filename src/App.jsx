@@ -30,17 +30,15 @@ const CanvasLoader = () => (
 const PageTransition = ({ children }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, filter: "blur(4px)" }}
+      initial={{ opacity: 0 }}
       // Entry: Delayed slightly to let the previous page exit
       animate={{
         opacity: 1,
-        filter: "blur(0px)",
         transition: { duration: 0.4, delay: 0.1, ease: "linear" },
       }}
       // Exit: Fast and immediate
       exit={{
         opacity: 0,
-        filter: "blur(4px)",
         transition: { duration: 0.2, ease: "linear" },
       }}
       className="w-full h-full"
