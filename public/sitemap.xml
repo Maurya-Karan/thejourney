@@ -5,6 +5,10 @@
     <loc>https://mauryakaran.com/</loc>
     <priority>1.0</priority>
   </url>
+   <url>
+    <loc>https://mauryakaran.com/blogs</loc>
+    <priority>0.8</priority>
+  </url>
   <!-- About Section -->
   <url>
     <loc>https://mauryakaran.com/#about</loc>
