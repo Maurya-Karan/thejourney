@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "npm run build && wrangler dev",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{js,jsx,css}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
@@ -25,6 +26,7 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.41.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "5.0.0",
@@ -39,7 +41,8 @@
     "prettier": "^3.8.4",
     "rollup-plugin-visualizer": "^5.12.0",
     "tailwindcss": "^3.3.2",
-    "vite": "7.3.5"
+    "vite": "7.3.5",
+    "wrangler": "^4.101.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
